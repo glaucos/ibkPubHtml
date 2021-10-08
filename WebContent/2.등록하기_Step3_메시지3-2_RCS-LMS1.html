@@ -1,0 +1,878 @@
+<!doctype html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Content-Script-Type" content="text/javascript" />
+	<meta http-equiv="Content-Style-Type" content="text/css" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <title>관리자페이지</title>
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+
+	<link rel="stylesheet" type="text/css" href="./css/style.css?v=20200314" />
+	<link rel="stylesheet" type="text/css" href="./css/animate.min.css" />
+	<link rel="stylesheet" type="text/css" href="./css/sweetalert.css" />
+  <link rel="stylesheet" type="text/css" href="./css/NanumGothic.css">
+	<link rel="stylesheet" type="text/css" href="./css/font-awesome/css/font-awesome.min.css" />
+	<link rel="stylesheet" type="text/css" href="./css/custom.css?v=20200314" />
+
+	<script type="text/javascript" src="./js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="./js/jquery.slimscroll.min.js"></script>
+	<script type="text/javascript" src="./js/sweetalert.min.js"></script>
+	<script type="text/javascript" src="./js/jquery-dateformat.min.js"></script>
+	<script type="text/javascript" src="./js/jquery.twbsPagination.min.js"></script>
+	<script type="text/javascript" src="./js/jquery.popupoverlay.js"></script>
+	<script type="text/javascript" src="./js/jquery-ui.min.js"></script>
+
+  <!-- begin daterangepicker -->
+  <script type="text/javascript" src="./js/moment.min.js"></script>
+  <script type="text/javascript" src="./js/daterangepicker.js"></script>
+  <link rel="stylesheet" type="text/css" href="./css/daterangepicker.css">
+  <!-- end daterangepicker -->
+
+  <!-- begin tippy -->
+  <script type="text/javascript" src="./js/polyfill.min.js?features=Array.prototype.find,Promise,Object.assign"></script>
+  <script type="text/javascript" src="./js/popper.min.js"></script>
+  <script type="text/javascript" src="./js/tippy-bundle.umd.min.js"></script>
+  <!-- end tippy -->
+
+  <!-- begin validate -->
+  <script type="text/javascript" src="./js/jquery.validate.min.js"></script>
+  <script type="text/javascript" src="./js/additional-methods.min.js"></script>
+  <!-- end validate -->
+
+  <!-- begin toast -->
+  <script type="text/javascript" src="./js/jquery.toast.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="./css/jquery.toast.min.css">
+  <!-- end toast -->
+
+  <!-- begin swiper -->
+  <script type="text/javascript" src="./js/slick.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="./css/slick.css">
+  <!-- end swiper -->
+
+	<script type="text/javascript" src="./js/common.js?v=20200314"></script>
+	<script type="text/javascript" src="./js/custom.js?v=20200314"></script>
+  <script type="text/javascript" src="./js/tooltip.js?v=20200314"></script>
+
+</head>
+<body>
+<div id="page-container" class="container">
+
+  <!-- 공통 header -->
+  <header id="header" class="header">
+    <div class="contents-area">
+      <!-- begin header-left -->
+      <div class="header-left"><a href="/"><img src="./img/logo-top.png"></a></div>
+<!--      <div class="header-left"><a href="/"><img src="./img/logo-top-admin.png"></a></div>-->
+      <!-- // end header-left -->
+
+      <!-- begin header-right -->
+      <div class="header-right">
+        <span class="user-nm">고객지원팀 | 홍길동님 로그인</span>
+        <button class="btn btn-logout">로그아웃</button>
+      </div>
+      <!-- // end header-right -->
+    </div>
+  </header>
+  <!-- // 공통 header -->
+
+  <!-- begin sidebar -->
+  <div class="sidebar">
+    <!-- begin sidebar scrollbar -->
+    <div data-scrollbar="true" data-height="100%">
+      <!-- begin sidebar nav -->
+      <ul class="nav font-size-12 left-menu">
+        <!--
+        <li class="has-sub">
+          <a href="javascript:;" class="icon-sms">
+            <b class="caret pull-right"></b>
+            <span>일반문자</span>
+          </a>
+          <ul class="sub-menu">
+            <li><a href="/views/sms/send.php" data-menu-id="11">문자보내기</a></li>
+            <li><a href="/views/sms/message.php" data-menu-id="12">메시지함</a></li>
+            <li><a href="/views/sms/format.php" data-menu-id="13">서식함</a></li>
+            <li><a href="/views/sms/address.php" data-menu-id="14">주소록</a></li>
+            <li><a href="/views/sms/preferences.php" data-menu-id="15">환경설정</a></li>
+            <li><a href="/views/sms/manual.php" data-menu-id="16">매뉴얼 다운로드</a></li>
+          </ul>
+        </li>
+        -->
+        <li class="has-sub">
+          <a href="javascript:;" class="icon-lms">
+            <b class="caret pull-right"></b>
+            <span>대량문자</span>
+          </a>
+          <ul class="sub-menu">
+            <li><a href="1.예약현황_1.html" data-menu-id="21">예약 현황</a></li>
+            <li><a href="2.등록하기_Step1_사전협의_1.html" data-menu-id="22">등록하기</a></li>
+            <li><a href="3.발송현황1.html" data-menu-id="23">발송 현황</a></li>
+            <li><a href="4.발송통계_1.일별.html" data-menu-id="24">발송 통계</a></li>
+          </ul>
+        </li>
+        <!--
+        <li class="has-sub">
+          <a href="javascript:;" class="icon-admin">
+            <b class="caret pull-right"></b>
+            <span>관리자</span>
+          </a>
+          <ul class="sub-menu">
+            <li><a href="/views/admin/ssoLoginAuth.php" data-menu-id="31">SSO 로그인 권한관리</a></li>
+            <li><a href="/views/admin/member.php" data-menu-id="32">로그인 사용자 관리</a></li>
+            <li><a href="/views/admin/motpMember.php" data-menu-id="33">MOTP 사용자 관리</a></li>
+            <li><a href="/views/admin/notice.php" data-menu-id="34">공지사항</a></li>
+            <li><a href="/views/admin/loginHistory.php" data-menu-id="35">로그인 이력조회</a></li>
+            <li><a href="/views/admin/mmsTemplate.php" data-menu-id="36">MMS 템플릿 관리</a></li>
+            <li><a href="/views/admin/sendManagement.php" data-menu-id="37">발송문자관리</a></li>
+          </ul>
+        </li>
+        -->
+        <li class="has-sub">
+          <a href="javascript:;" class="icon-center">
+            <b class="caret pull-right"></b>
+            <span>템플릿 관리</span>
+          </a>
+          <ul class="sub-menu">
+            <li><a href="RCS템플릿.html" data-menu-id="45">RCS 템플릿</a></li>
+            <li><a href="알림톡템플릿.html" data-menu-id="46">알림톡 템플릿</a></li>
+            <!--
+            <li><a href="/views/center/process.php" data-menu-id="41">프로세스관리</a></li>
+            <li><a href="/views/center/statistics.php" data-menu-id="42">통계관리</a></li>
+            <li><a href="/views/center/code.php" data-menu-id="43">코드관리</a></li>
+            <li><a href="/views/center/fileProcessing.php" data-menu-id="44">파일처리기관리</a></li>
+            -->
+          </ul>
+        </li>
+      </ul>
+      <!-- end sidebar nav -->
+    </div>
+    <!-- end sidebar scrollbar -->
+  </div>
+  <!-- end sidebar -->
+
+  <!-- begin content -->
+  <div id="content" class="content">
+
+    <!-- begin page-header -->
+    <div class="page-header">
+      등록하기
+      <ol class="breadcrumb pull-right"></ol>
+    </div>
+    <!-- end page-header -->
+
+    <!-- begin Step -->
+    <div class="row">
+      <div class="step-area">
+        <div class="step-box checked">
+          <div>1</div>
+          <p>사전협의</p>
+        </div>
+        <div class="step-box checked">
+          <div>2</div>
+          <p>기본정보</p>
+        </div>
+        <div class="step-box active">
+          <div>3</div>
+          <p>메시지</p>
+        </div>
+        <div class="step-box">
+          <div>4</div>
+          <p>발송대상/발송일</p>
+        </div>
+        <div class="step-box">
+          <div>5</div>
+          <p>승인절차/완료</p>
+        </div>
+      </div>
+    </div>
+    <div class="required-msg">
+      <i class="required"></i> 는 필수 정보입니다.
+    </div>
+    <!-- end Step -->
+
+    <!-- begin 기본정보 -->
+    <section class="clearfix">
+      <form id="frmStep3" onSubmit="return false;">
+        <div class="section-left">
+          <div class="row clearfix">
+            <div class="reg-left">
+              <h3 class="required pdd-top-4">메시지 유형</h3>
+            </div>
+            <div class="reg-right">
+              <div class="ele_area">
+                <div class="search_field inline-form">
+                  <div class="inline-block">
+                    <label class="radio-container">문자
+                      <input type="radio" name="radio1" />
+                      <span class="checkmark"></span>
+                    </label>
+                    <label class="radio-container">알림톡
+                      <input type="radio" name="radio1" />
+                      <span class="checkmark"></span>
+                    </label>
+                    <label class="radio-container">RCS
+                      <input type="radio" name="radio1" checked="checked" />
+                      <span class="checkmark"></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row clearfix pdd-top-10">
+            <div class="reg-left"></div>
+            <div class="reg-right">
+              <div class="search_field width-100">
+                <select id="rcs-msg-type" class="width-100">
+                  <option value="sms">SMS</option>
+                  <option value="lms" selected>LMS</option>
+                  <option value="mms">MMS</option>
+                  <option value="template">서술/스타일 템플릿</option>
+                  <option value="free">Free 템플릿</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="row clearfix">
+            <div class="reg-left">
+              <h3 class="pdd-top-4">메시지 제목</h3>
+            </div>
+            <div class="reg-right">
+              <div class="ele_area remaining" data-input="msg_subject" data-count="msg_subject_count" data-text-len="32">
+                <input type="text" class="form-control" id="msg_subject" name="msg_subject" value="" placeholder="제목을 입력하세요" />
+                <p class="text-right color-gray"><span id="msg_subject_count">0</span>/32 자</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="row clearfix">
+            <div class="reg-left">
+              <h3 class="required pdd-top-4">메시지 내용</h3>
+            </div>
+            <div class="reg-right">
+              <div class="ele_area">
+                <div class="search_field inline-form">
+                  <div class="mrg-right-10">
+                    <select class="width-100">
+                      <option value="">치환변수 선택</option>
+                      <option value="">${고객명}</option>
+                      <option value="">${변수1}</option>
+                      <option value="">${변수2}</option>
+                      <option value="">${변수3}</option>
+                      <option value="">${변수4}</option>
+                      <option value="">${변수5}</option>
+                      <option value="">${변수6}</option>
+                      <option value="">${변수7}</option>
+                      <option value="">${변수8}</option>
+                      <option value="">${변수9}</option>
+                      <option value="">${변수10}</option>
+                    </select>
+                  </div>
+                  <p>
+                    <button class="btn btn-inner">입력</button>
+                  </p>
+                </div>
+                <div class="search_field width-100">
+                  <div class="ele_area remaining" data-input="msg_content2" data-count="msg_content2_count" data-text-len="1300">
+                    <textarea rows="5" class="width-100" id="msg_content2" name="msg_content2" placeholder="내용을 입력하세요"></textarea>
+                    <p class="text-right color-gray"><span id="msg_content2_count">0</span>/1,300 자</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row clearfix">
+            <div class="reg-left">
+              <h3 class="pdd-top-4">
+                <span class="required">버튼 노출</span>
+                <span class="icon-tooltip" data-tippy-content="
+<p>메시지 유형 중 RCS에서만 버튼이 노출됩니다. 단,  Free 템플릿을 제외</p>
+<p class='pdd-btm-5'>최소 1개~3개로 유형별 버튼 개수는 다르며 액션 선택에 따라 입력값이 다릅니다.</p>
+<table class='table table-sm'>
+<colgroup>
+	<col width='120' />
+	<col width='*' />
+</colgroup>
+<tbody>
+	<tr>
+		<th>복사하기</th>
+		<td class='text-left'>특정 문구를 사용자 단말이 자동 복사할 수 있게 합니다.</td>
+	</tr>
+	<tr>
+		<th>URL연결</th>
+		<td class='text-left'>Web page 또는 App으로 이동할 수 있습니다.</td>
+	</tr>
+	<tr>
+		<th>전화걸기</th>
+		<td class='text-left'>특정 전화번호로 전화를 걸 수 있습니다.</td>
+	</tr>
+	<tr>
+		<th>지도 보여주기(좌표)</th>
+		<td class='text-left' rowspan='3'>미리 지정된 지도의 위치를 보여주거나 사용자의 현재 위치를 서버로 전송할 수 있습니다.</td>
+	</tr>
+	<tr>
+		<th>지도 보여주기(쿼리)</th>
+	</tr>
+	<tr>
+		<th>현재위치공유</th>
+	</tr>
+	<tr>
+		<th>캘린더등록</th>
+		<td class='text-left'>사용자의 캘린더에 특정 일정을 등록할 수 있습니다.</td>
+	</tr>
+	<tr>
+		<th>메시지전송</th>
+		<td class='text-left'>입력한 내용과 전화번호로 메시지를 보낼 수 있습니다.</td>
+	</tr>
+</tr>
+</tbody>
+</table>"><i class="fa fa-info"></i></span>
+              </h3>
+            </div>
+            <div class="reg-right">
+              <div class="ele_area">
+                <div class="search_field inline-form">
+                  <div class="inline-block">
+                    <label class="radio-container">미사용
+                      <input type="radio" name="button-display" value="0" checked="checked" />
+                      <span class="checkmark"></span>
+                    </label>
+                    <label class="radio-container">1개
+                      <input type="radio" name="button-display" value="1" />
+                      <span class="checkmark"></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row clearfix button-display mrg-btm-10">
+            <div class="reg-left">
+              <h3 class="pdd-top-4 pdd-left-25 font-weight-light font-size-12">버튼 1</h3>
+            </div>
+            <div class="reg-right">
+              <div class="ele_area">
+                <div class="search_field inline-form">
+                  <p class="mrg-right-10 width150">
+                    <select class="width-100">
+                      <option value="" selected>액션 선택</option>
+                      <option value="copy">복사하기</option>
+                      <option value="url">URL연결</option>
+                      <option value="tel">전화걸기</option>
+                      <option value="coordinate">지도 보여주기(좌표)</option>
+                      <option value="query">지도 보여주기(쿼리)</option>
+                      <option value="position">현재위치공유</option>
+                      <option value="calendar">캘린더등록</option>
+                      <option value="msg">메시지전송</option>
+                    </select>
+                  </p>
+                  <div class="ele_area remaining" data-input="url_name" data-count="url_name_count" data-text-len="17">
+                    <input type="text" class="form-control" id="url_name" name="url_name" value="" placeholder="버튼명을 입력하세요"/>
+                    <p class="text-right color-gray"><span id="url_name_count">0</span>/17 자</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row clearfix button-display mrg-btm-10">
+            <div class="reg-left">
+              <h3 class="pdd-top-4 pdd-left-25 font-weight-light font-size-12">버튼 2</h3>
+            </div>
+            <div class="reg-right">
+              <div class="ele_area">
+                <div class="search_field inline-form">
+                  <p class="mrg-right-10 width150">
+                    <select class="width-100">
+                      <option value="">액션 선택</option>
+                      <option value="copy" selected>복사하기</option>
+                      <option value="url">URL연결</option>
+                      <option value="tel">전화걸기</option>
+                      <option value="coordinate">지도 보여주기(좌표)</option>
+                      <option value="query">지도 보여주기(쿼리)</option>
+                      <option value="position">현재위치공유</option>
+                      <option value="calendar">캘린더등록</option>
+                      <option value="msg">메시지전송</option>
+                    </select>
+                  </p>
+                  <div class="ele_area remaining" data-input="input_copy_name" data-count="input_copy_name_count" data-text-len="17">
+                    <input type="text" class="form-control" id="input_copy_name" name="input_copy_name" value="" placeholder="버튼명을 입력하세요"/>
+                    <p class="text-right color-gray"><span id="input_copy_name_count">0</span>/17 자</p>
+                  </div>
+                </div>
+              </div>
+              <div class="ele_area pdd-top-10 mrg-top-20">
+                <div class="search_field inline-form">
+                  <div class="remaining" data-input="input_copy_value" data-count="input_copy_value_count" data-text-len="200">
+                    <input type="text" class="form-control" id="input_copy_value" name="input_copy_value" value="" placeholder="복사할 값을 입력하세요"/>
+                    <p class="text-right color-gray"><span id="input_copy_value_count">0</span>/200 자</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row clearfix button-display mrg-btm-10">
+            <div class="reg-left">
+              <h3 class="pdd-top-4 pdd-left-25 font-weight-light font-size-12">버튼 3</h3>
+            </div>
+            <div class="reg-right">
+              <div class="ele_area">
+                <div class="search_field inline-form">
+                  <p class="mrg-right-10 width150">
+                    <select class="width-100">
+                      <option value="">액션 선택</option>
+                      <option value="copy">복사하기</option>
+                      <option value="url" selected>URL연결</option>
+                      <option value="tel">전화걸기</option>
+                      <option value="coordinate">지도 보여주기(좌표)</option>
+                      <option value="query">지도 보여주기(쿼리)</option>
+                      <option value="position">현재위치공유</option>
+                      <option value="calendar">캘린더등록</option>
+                      <option value="msg">메시지전송</option>
+                    </select>
+                  </p>
+                  <div class="ele_area remaining" data-input="input_url_name" data-count="input_url_name_count" data-text-len="17">
+                    <input type="text" class="form-control" id="input_url_name" name="input_url_name" value="" placeholder="버튼명을 입력하세요"/>
+                    <p class="text-right color-gray"><span id="input_url_name_count">0</span>/17 자</p>
+                  </div>
+                </div>
+              </div>
+              <div class="ele_area pdd-top-10 mrg-top-20">
+                <div class="search_field inline-form">
+                  <div class="remaining" data-input="input_url_value" data-count="input_url_value_count" data-text-len="200">
+                    <input type="text" class="form-control" id="input_url_value" name="input_url_value" value="" placeholder="http://www.ibk.co.kr 형식으로 입력하세요"/>
+                    <p class="text-right color-gray"><span id="input_url_value_count">0</span>/200 자</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row clearfix button-display mrg-btm-10">
+            <div class="reg-left">
+              <h3 class="pdd-top-4 pdd-left-25 font-weight-light font-size-12">버튼 4</h3>
+            </div>
+            <div class="reg-right">
+              <div class="ele_area">
+                <div class="search_field inline-form">
+                  <p class="mrg-right-10 width150">
+                    <select class="width-100">
+                      <option value="">액션 선택</option>
+                      <option value="copy">복사하기</option>
+                      <option value="url">URL연결</option>
+                      <option value="tel" selected>전화걸기</option>
+                      <option value="coordinate">지도 보여주기(좌표)</option>
+                      <option value="query">지도 보여주기(쿼리)</option>
+                      <option value="position">현재위치공유</option>
+                      <option value="calendar">캘린더등록</option>
+                      <option value="msg">메시지전송</option>
+                    </select>
+                  </p>
+                  <div class="ele_area remaining" data-input="input_tel_name" data-count="input_tel_name_count" data-text-len="17">
+                    <input type="text" class="form-control" id="input_tel_name" name="input_tel_name" value="" placeholder="버튼명을 입력하세요"/>
+                    <p class="text-right color-gray"><span id="input_tel_name_count">0</span>/17 자</p>
+                  </div>
+                </div>
+              </div>
+              <div class="ele_area pdd-top-10 mrg-top-20">
+                <div class="search_field inline-form">
+                  <div class="remaining" data-input="input_tel_value" data-count="input_tel_value_count" data-text-len="40">
+                    <input type="text" class="form-control" id="input_tel_value" name="input_tel_value" value="" placeholder="전화번호를 입력하세요"/>
+                    <p class="text-right color-gray"><span id="input_tel_value_count">0</span>/40 자</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row clearfix button-display mrg-btm-10">
+            <div class="reg-left">
+              <h3 class="pdd-top-4 pdd-left-25 font-weight-light font-size-12">버튼 5</h3>
+            </div>
+            <div class="reg-right">
+              <div class="ele_area">
+                <div class="search_field inline-form">
+                  <p class="mrg-right-10 width150">
+                    <select class="width-100">
+                      <option value="">액션 선택</option>
+                      <option value="copy">복사하기</option>
+                      <option value="url">URL연결</option>
+                      <option value="tel">전화걸기</option>
+                      <option value="coordinate" selected>지도 보여주기(좌표)</option>
+                      <option value="query">지도 보여주기(쿼리)</option>
+                      <option value="position">현재위치공유</option>
+                      <option value="calendar">캘린더등록</option>
+                      <option value="msg">메시지전송</option>
+                    </select>
+                  </p>
+                  <div class="ele_area remaining" data-input="input_coordinate_name" data-count="input_coordinate_name_count" data-text-len="17">
+                    <input type="text" class="form-control" id="input_coordinate_name" name="input_coordinate_name" value="" placeholder="버튼명을 입력하세요"/>
+                    <p class="text-right color-gray"><span id="input_coordinate_name_count">0</span>/17 자</p>
+                  </div>
+                </div>
+              </div>
+              <div class="ele_area pdd-top-10 mrg-top-20">
+                <div class="search_field inline-form">
+                  <div class="remaining" data-input="input_coordinate_lat_value" data-count="input_coordinate_lat_value_count" data-text-len="40">
+                    <input type="text" class="form-control" id="input_coordinate_lat_value" name="input_coordinate_lat_value" value="" placeholder="위도를 입력하세요"/>
+                    <p class="text-right color-gray"><span id="input_coordinate_lat_value_count">0</span>/40 자</p>
+                  </div>
+                </div>
+              </div>
+              <div class="ele_area pdd-top-10 mrg-top-20">
+                <div class="search_field inline-form">
+                  <div class="remaining" data-input="input_coordinate_long_value" data-count="input_coordinate_long_value_count" data-text-len="40">
+                    <input type="text" class="form-control" id="input_coordinate_long_value" name="input_coordinate_long_value" value="" placeholder="경도를 입력하세요"/>
+                    <p class="text-right color-gray"><span id="input_coordinate_long_value_count">0</span>/40 자</p>
+                  </div>
+                </div>
+              </div>
+              <div class="ele_area pdd-top-10 mrg-top-20">
+                <div class="search_field inline-form">
+                  <div class="remaining" data-input="input_coordinate_position_value" data-count="input_coordinate_position_value_count" data-text-len="100">
+                    <input type="text" class="form-control" id="input_coordinate_position_value" name="input_coordinate_position_value" value="" placeholder="위치이름을 입력하세요"/>
+                    <p class="text-right color-gray"><span id="input_coordinate_position_value_count">0</span>/100 자</p>
+                  </div>
+                </div>
+              </div>
+              <div class="ele_area pdd-top-10 mrg-top-20">
+                <div class="search_field inline-form">
+                  <div class="remaining" data-input="input_coordinate_url_value" data-count="input_coordinate_url_value_count" data-text-len="200">
+                    <input type="text" class="form-control" id="input_coordinate_url_value" name="input_coordinate_url_value" value="" placeholder="http://www.ibk.co.kr 형식으로 입력하세요"/>
+                    <p class="text-right color-gray"><span id="input_coordinate_url_value_count">0</span>/200 자</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row clearfix button-display mrg-btm-10">
+            <div class="reg-left">
+              <h3 class="pdd-top-4 pdd-left-25 font-weight-light font-size-12">버튼 6</h3>
+            </div>
+            <div class="reg-right">
+              <div class="ele_area">
+                <div class="search_field inline-form">
+                  <p class="mrg-right-10 width150">
+                    <select class="width-100">
+                      <option value="">액션 선택</option>
+                      <option value="copy">복사하기</option>
+                      <option value="url">URL연결</option>
+                      <option value="tel">전화걸기</option>
+                      <option value="coordinate">지도 보여주기(좌표)</option>
+                      <option value="query" selected>지도 보여주기(쿼리)</option>
+                      <option value="position">현재위치공유</option>
+                      <option value="calendar">캘린더등록</option>
+                      <option value="msg">메시지전송</option>
+                    </select>
+                  </p>
+                  <div class="ele_area remaining" data-input="input_query_name" data-count="input_query_name_count" data-text-len="17">
+                    <input type="text" class="form-control" id="input_query_name" name="input_query_name" value="" placeholder="버튼명을 입력하세요"/>
+                    <p class="text-right color-gray"><span id="input_query_name_count">0</span>/17 자</p>
+                  </div>
+                </div>
+              </div>
+              <div class="ele_area pdd-top-10 mrg-top-20">
+                <div class="search_field inline-form">
+                  <div class="remaining" data-input="input_query_position_value" data-count="input_query_position_value_count" data-text-len="100">
+                    <input type="text" class="form-control" id="input_query_position_value" name="input_query_position_value" value="" placeholder="위치이름을 입력하세요"/>
+                    <p class="text-right color-gray"><span id="input_query_position_value_count">0</span>/100 자</p>
+                  </div>
+                </div>
+              </div>
+              <div class="ele_area pdd-top-10 mrg-top-20">
+                <div class="search_field inline-form">
+                  <div class="remaining" data-input="input_query_url_value" data-count="input_query_url_value_count" data-text-len="200">
+                    <input type="text" class="form-control" id="input_query_url_value" name="input_query_url_value" value="" placeholder="http://www.ibk.co.kr 형식으로 입력하세요"/>
+                    <p class="text-right color-gray"><span id="input_query_url_value_count">0</span>/200 자</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row clearfix button-display mrg-btm-10">
+            <div class="reg-left">
+              <h3 class="pdd-top-4 pdd-left-25 font-weight-light font-size-12">버튼 7</h3>
+            </div>
+            <div class="reg-right">
+              <div class="ele_area">
+                <div class="search_field inline-form">
+                  <p class="mrg-right-10 width150">
+                    <select class="width-100">
+                      <option value="">액션 선택</option>
+                      <option value="copy">복사하기</option>
+                      <option value="url">URL연결</option>
+                      <option value="tel">전화걸기</option>
+                      <option value="coordinate">지도 보여주기(좌표)</option>
+                      <option value="query">지도 보여주기(쿼리)</option>
+                      <option value="position" selected>현재위치공유</option>
+                      <option value="calendar">캘린더등록</option>
+                      <option value="msg">메시지전송</option>
+                    </select>
+                  </p>
+                  <div class="ele_area remaining" data-input="input_position_name" data-count="input_position_name_count" data-text-len="17">
+                    <input type="text" class="form-control" id="input_position_name" name="input_position_name" value="" placeholder="버튼명을 입력하세요"/>
+                    <p class="text-right color-gray"><span id="input_position_name_count">0</span>/17 자</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row clearfix button-display mrg-btm-10">
+            <div class="reg-left">
+              <h3 class="pdd-top-4 pdd-left-25 font-weight-light font-size-12">버튼 8</h3>
+            </div>
+            <div class="reg-right">
+              <div class="ele_area">
+                <div class="search_field inline-form">
+                  <p class="mrg-right-10 width150">
+                    <select class="width-100">
+                      <option value="">액션 선택</option>
+                      <option value="copy">복사하기</option>
+                      <option value="url">URL연결</option>
+                      <option value="tel">전화걸기</option>
+                      <option value="coordinate">지도 보여주기(좌표)</option>
+                      <option value="query">지도 보여주기(쿼리)</option>
+                      <option value="position">현재위치공유</option>
+                      <option value="calendar" selected>캘린더등록</option>
+                      <option value="msg">메시지전송</option>
+                    </select>
+                  </p>
+                  <div class="ele_area remaining" data-input="input_calendar_name" data-count="input_calendar_name_count" data-text-len="17">
+                    <input type="text" class="form-control" id="input_calendar_name" name="input_calendar_name" value="" placeholder="버튼명을 입력하세요"/>
+                    <p class="text-right color-gray"><span id="input_calendar_name_count">0</span>/17 자</p>
+                  </div>
+
+                </div>
+              </div>
+              <div class="ele_area pdd-top-10 mrg-top-20">
+                <div class="search_field inline-form">
+                  <input type="text" class="form-control date mrg-right-10" readonly="" value="" placeholder="시작일" />
+                  <input type="text" class="form-control date" readonly="" value="" placeholder="종료일">
+                </div>
+              </div>
+              <div class="ele_area pdd-top-10 mrg-top-20">
+                <div class="search_field inline-form">
+                  <div class="remaining" data-input="input_calendar_title_value" data-count="input_calendar_title_value_count" data-text-len="100">
+                    <input type="text" class="form-control" id="input_calendar_title_value" name="input_calendar_title_value" value="" placeholder="제목을 입력하세요"/>
+                    <p class="text-right color-gray"><span id="input_calendar_title_value_count">0</span>/100 자</p>
+                  </div>
+                </div>
+              </div>
+              <!--<div class="ele_area pdd-top-10 mrg-top-20">
+                <div class="search_field inline-form">
+                  <div class="remaining" data-input="input_calendar_content_value" data-count="input_calendar_content_value_count" data-text-len="500">
+                    <input type="text" class="form-control" id="input_calendar_content_value" name="input_calendar_content_value" value="" placeholder="내용을 입력하세요"/>
+                    <p class="text-right color-gray"><span id="input_calendar_content_value_count">0</span>/500 자</p>
+                  </div>
+                </div>
+              </div>-->
+              <div class="ele_area pdd-top-10 mrg-top-20">
+                <div class="search_field display-block">
+                  <div class="remaining" data-input="input_calendar_content_value" data-count="input_calendar_content_value_count" data-text-len="500">
+                    <textarea rows="5" class="width-100" id="input_calendar_content_value" name="input_calendar_content_value" placeholder="내용을 입력하세요"></textarea>
+                    <p class="text-right color-gray"><span id="input_calendar_content_value_count">0</span>/500 자</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row clearfix button-display mrg-btm-10">
+            <div class="reg-left">
+              <h3 class="pdd-top-4 pdd-left-25 font-weight-light font-size-12">버튼 9</h3>
+            </div>
+            <div class="reg-right">
+              <div class="ele_area">
+                <div class="search_field inline-form">
+                  <p class="mrg-right-10 width150">
+                    <select class="width-100">
+                      <option value="">액션 선택</option>
+                      <option value="copy">복사하기</option>
+                      <option value="url">URL연결</option>
+                      <option value="tel">전화걸기</option>
+                      <option value="coordinate">지도 보여주기(좌표)</option>
+                      <option value="query">지도 보여주기(쿼리)</option>
+                      <option value="position">현재위치공유</option>
+                      <option value="calendar">캘린더등록</option>
+                      <option value="msg" selected>메시지전송</option>
+                    </select>
+                  </p>
+                  <div class="ele_area remaining" data-input="input_msg_name" data-count="input_msg_name_count" data-text-len="17">
+                    <input type="text" class="form-control" id="input_msg_name" name="input_msg_name" value="" placeholder="버튼명을 입력하세요"/>
+                    <p class="text-right color-gray"><span id="input_msg_name_count">0</span>/17 자</p>
+                  </div>
+
+                </div>
+              </div>
+              <div class="ele_area pdd-top-10 mrg-top-20">
+                <div class="search_field inline-form">
+                  <div class="remaining" data-input="input_msg_title_value" data-count="input_msg_title_value_count" data-text-len="40">
+                    <input type="text" class="form-control" id="input_msg_title_value" name="input_msg_title_value" value="" placeholder="전화번호를 입력하세요"/>
+                    <p class="text-right color-gray"><span id="input_msg_title_value_count">0</span>/40 자</p>
+                  </div>
+                </div>
+              </div>
+              <div class="ele_area pdd-top-10 mrg-top-20">
+                <div class="search_field inline-form">
+                  <div class="remaining" data-input="input_msg_content_value" data-count="input_msg_content_value_count" data-text-len="500">
+                    <input type="text" class="form-control" id="input_msg_content_value" name="input_msg_content_value" value="" placeholder="문자메시지 내용을 입력하세요"/>
+                    <p class="text-right color-gray"><span id="input_msg_content_value_count">0</span>/100 자</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row clearfix">
+            <div class="reg-left">
+              <h3 class="pdd-top-4">
+                <span class="required">전환발송 보내기</span>
+                <span class="icon-tooltip" data-tippy-content="전환발송 보내기를 사용할 경우, 채널을 통한 메시지 전송 실패 시 문자로<br/>전환하여 전송하는 방법으로 미리보기에서 확인이 가능합니다."><i class="fa fa-info"></i></span>
+              </h3>
+              <p>(발송 실패 시)</p>
+            </div>
+            <div class="reg-right">
+              <div class="ele_area">
+                <div class="search_field inline-form">
+                  <div class="inline-block">
+                    <label class="radio-container">사용
+                      <input type="radio" name="how-send-type" data-input="div-how-send-type-y" value="Y" checked="checked" />
+                      <span class="checkmark"></span>
+                    </label>
+                    <label class="radio-container">미사용
+                      <input type="radio" name="how-send-type" data-input="div-how-send-type-n" value="N" />
+                      <span class="checkmark"></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <section class="how-send-type-list" id="div-how-send-type-y">
+                <p class="pdd-top-5">
+                  메시지를 자유롭게 수정하여 발송 가능하며, 입력한 메시지 byte 수에 따라 SMS/LMS 로 자동 변경됩니다.
+                </p>
+                <div class="row ele_area">
+                  <div class="search_field display-block">
+                    <label class="required">대체 메시지 유형</label>
+                    <div>
+                      <input type="text" class="form-control" value="LMS" placeholder="" readonly="readonly" />
+                    </div>
+                  </div>
+                </div>
+                <div class="row ele_area">
+                  <div class="search_field display-block">
+                    <label class="required">대체 메시지 내용</label>
+                    <div>
+                      <div class="ele_area">
+                        <input type="text" class="form-control" value="" placeholder="제목을 입력하세요 (최대 60byte)" />
+                      </div>
+                      <div class="ele_area remaining_byte pdd-top-10" data-input="how_msg_type_content" data-count="how_msg_type_content_count" data-text-len="200">
+                        <textarea rows="5" class="width-100" id="how_msg_type_content" name="how_msg_type_content" placeholder="내용을 입력하세요"></textarea>
+                        <p class="text-right color-gray"><span id="how_msg_type_content_count">0</span>/2,000 byte</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+
+        </div>
+        <div class="section-right mrg-top-20">
+          <div class="div-msg-preview">
+            <div class="div-msg-preview-header">
+              <h2><i class="fa fa-search pdd-right-5"></i> 미리보기 | RCS - LMS</h2>
+            </div>
+            <div class="div-msg-preview-body preview-height">
+              <!-- 미리보기 유형 있을 경우 -->
+              <div class="mrg-btm-15">
+                <label class="pdd-right-10 font-weight-bold">미리보기 유형</label>
+                <div class="inline-block">
+                  <label class="radio-container">RCS - LMS
+                    <input type="radio" name="radio2" checked="checked" />
+                    <span class="checkmark"></span>
+                  </label>
+                  <label class="radio-container">전환발송
+                    <input type="radio" name="radio2" />
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+              </div>
+              <!-- // 미리보기 유형 있을 경우 -->
+              <div class="emulator_area">
+                <div class="emulator_cont">
+                  <div class="template-richcard-general">
+                    <!-- 제목 -->
+                    <div class="template-richcard-titleview">
+                      <h4 class="title">기업은행 이벤트 당첨 안내</h4>
+                    </div>
+                    <!-- // 제목 -->
+                    <!-- 내용 -->
+                    <div class="template-richcard-descriptionview">
+                      <p class="text">
+                        안녕하세요. ${고객명} <br>
+                        이벤트 당첨을 축하드립니다.<br><br>
+
+                        - 이벤트명 : 기업은행 썸머 이벤트<br>
+                        - 사은품 : ${변수1}<br>
+                        - 배송지 :  ${변수2}<br><br>
+
+                        감사합니다.<br>
+                      </p>
+                    </div>
+                    <!-- // 내용 -->
+                  </div>
+                  <!-- 버튼 -->
+                  <div class="template-openrichcard-suggestion">
+                    <div>이벤트 당첨 확인하기</div>
+                  </div>
+                  <div class="template-openrichcard-suggestion">
+                    <div>이벤트  더 보기</div>
+                  </div>
+                  <!-- // 버튼 -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row text-center pull-left">
+          <button class="btn btn-border-sub1">취소</button>
+          <button class="btn btn-border-main">임시저장</button>
+          <button class="btn btn-border-sub2">이전</button>
+          <button class="btn btn-bg-main">다음</button>
+        </div>
+      </form>
+    </section>
+    <!-- end 기본정보 -->
+  </div>
+  <!-- end content -->
+
+<!-- 현재 페이지에 필요한 js -->
+<script type="text/javascript">
+	$(document).ready(function() {
+    init();
+	});
+
+	// 초기실행
+	function init() {
+	}
+
+
+</script>
+<!-- // 현재 페이지에 필요한 js -->
+
+  	</div>
+  <div class="footer">
+    Copyright 2021 IBK All rights reserved.
+  </div>
+</body>
+</html>

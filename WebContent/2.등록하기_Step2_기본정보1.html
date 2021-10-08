@@ -1,0 +1,347 @@
+<!doctype html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Content-Script-Type" content="text/javascript" />
+	<meta http-equiv="Content-Style-Type" content="text/css" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <title>관리자페이지</title>
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+
+	<link rel="stylesheet" type="text/css" href="./css/style.css?v=20200314" />
+	<link rel="stylesheet" type="text/css" href="./css/animate.min.css" />
+	<link rel="stylesheet" type="text/css" href="./css/sweetalert.css" />
+  <link rel="stylesheet" type="text/css" href="./css/NanumGothic.css">
+	<link rel="stylesheet" type="text/css" href="./css/font-awesome/css/font-awesome.min.css" />
+	<link rel="stylesheet" type="text/css" href="./css/custom.css?v=20200314" />
+
+	<script type="text/javascript" src="./js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="./js/jquery.slimscroll.min.js"></script>
+	<script type="text/javascript" src="./js/sweetalert.min.js"></script>
+	<script type="text/javascript" src="./js/jquery-dateformat.min.js"></script>
+	<script type="text/javascript" src="./js/jquery.twbsPagination.min.js"></script>
+	<script type="text/javascript" src="./js/jquery.popupoverlay.js"></script>
+	<script type="text/javascript" src="./js/jquery-ui.min.js"></script>
+
+  <!-- begin daterangepicker -->
+  <script type="text/javascript" src="./js/moment.min.js"></script>
+  <script type="text/javascript" src="./js/daterangepicker.js"></script>
+  <link rel="stylesheet" type="text/css" href="./css/daterangepicker.css">
+  <!-- end daterangepicker -->
+
+  <!-- begin tippy -->
+  <script type="text/javascript" src="./js/polyfill.min.js?features=Array.prototype.find,Promise,Object.assign"></script>
+  <script type="text/javascript" src="./js/popper.min.js"></script>
+  <script type="text/javascript" src="./js/tippy-bundle.umd.min.js"></script>
+  <!-- end tippy -->
+
+  <!-- begin validate -->
+  <script type="text/javascript" src="./js/jquery.validate.min.js"></script>
+  <script type="text/javascript" src="./js/additional-methods.min.js"></script>
+  <!-- end validate -->
+
+  <!-- begin toast -->
+  <script type="text/javascript" src="./js/jquery.toast.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="./css/jquery.toast.min.css">
+  <!-- end toast -->
+
+  <!-- begin swiper -->
+  <script type="text/javascript" src="./js/slick.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="./css/slick.css">
+  <!-- end swiper -->
+
+	<script type="text/javascript" src="./js/common.js?v=20200314"></script>
+	<script type="text/javascript" src="./js/custom.js?v=20200314"></script>
+  <script type="text/javascript" src="./js/tooltip.js?v=20200314"></script>
+
+</head>
+<body>
+<div id="page-container" class="container">
+
+  <!-- 공통 header -->
+  <header id="header" class="header">
+    <div class="contents-area">
+      <!-- begin header-left -->
+      <div class="header-left"><a href="/"><img src="./img/logo-top.png"></a></div>
+<!--      <div class="header-left"><a href="/"><img src="./img/logo-top-admin.png"></a></div>-->
+      <!-- // end header-left -->
+
+      <!-- begin header-right -->
+      <div class="header-right">
+        <span class="user-nm">고객지원팀 | 홍길동님 로그인</span>
+        <button class="btn btn-logout">로그아웃</button>
+      </div>
+      <!-- // end header-right -->
+    </div>
+  </header>
+  <!-- // 공통 header -->
+
+  <!-- begin sidebar -->
+  <div class="sidebar">
+    <!-- begin sidebar scrollbar -->
+    <div data-scrollbar="true" data-height="100%">
+      <!-- begin sidebar nav -->
+      <ul class="nav font-size-12 left-menu">
+        <!--
+        <li class="has-sub">
+          <a href="javascript:;" class="icon-sms">
+            <b class="caret pull-right"></b>
+            <span>일반문자</span>
+          </a>
+          <ul class="sub-menu">
+            <li><a href="/views/sms/send.php" data-menu-id="11">문자보내기</a></li>
+            <li><a href="/views/sms/message.php" data-menu-id="12">메시지함</a></li>
+            <li><a href="/views/sms/format.php" data-menu-id="13">서식함</a></li>
+            <li><a href="/views/sms/address.php" data-menu-id="14">주소록</a></li>
+            <li><a href="/views/sms/preferences.php" data-menu-id="15">환경설정</a></li>
+            <li><a href="/views/sms/manual.php" data-menu-id="16">매뉴얼 다운로드</a></li>
+          </ul>
+        </li>
+        -->
+        <li class="has-sub">
+          <a href="javascript:;" class="icon-lms">
+            <b class="caret pull-right"></b>
+            <span>대량문자</span>
+          </a>
+          <ul class="sub-menu">
+            <li><a href="1.예약현황_1.html" data-menu-id="21">예약 현황</a></li>
+            <li><a href="2.등록하기_Step1_사전협의_1.html" data-menu-id="22">등록하기</a></li>
+            <li><a href="3.발송현황1.html" data-menu-id="23">발송 현황</a></li>
+            <li><a href="4.발송통계_1.일별.html" data-menu-id="24">발송 통계</a></li>
+          </ul>
+        </li>
+        <!--
+        <li class="has-sub">
+          <a href="javascript:;" class="icon-admin">
+            <b class="caret pull-right"></b>
+            <span>관리자</span>
+          </a>
+          <ul class="sub-menu">
+            <li><a href="/views/admin/ssoLoginAuth.php" data-menu-id="31">SSO 로그인 권한관리</a></li>
+            <li><a href="/views/admin/member.php" data-menu-id="32">로그인 사용자 관리</a></li>
+            <li><a href="/views/admin/motpMember.php" data-menu-id="33">MOTP 사용자 관리</a></li>
+            <li><a href="/views/admin/notice.php" data-menu-id="34">공지사항</a></li>
+            <li><a href="/views/admin/loginHistory.php" data-menu-id="35">로그인 이력조회</a></li>
+            <li><a href="/views/admin/mmsTemplate.php" data-menu-id="36">MMS 템플릿 관리</a></li>
+            <li><a href="/views/admin/sendManagement.php" data-menu-id="37">발송문자관리</a></li>
+          </ul>
+        </li>
+        -->
+        <li class="has-sub">
+          <a href="javascript:;" class="icon-center">
+            <b class="caret pull-right"></b>
+            <span>템플릿 관리</span>
+          </a>
+          <ul class="sub-menu">
+            <li><a href="RCS템플릿.html" data-menu-id="45">RCS 템플릿</a></li>
+            <li><a href="알림톡템플릿.html" data-menu-id="46">알림톡 템플릿</a></li>
+            <!--
+            <li><a href="/views/center/process.php" data-menu-id="41">프로세스관리</a></li>
+            <li><a href="/views/center/statistics.php" data-menu-id="42">통계관리</a></li>
+            <li><a href="/views/center/code.php" data-menu-id="43">코드관리</a></li>
+            <li><a href="/views/center/fileProcessing.php" data-menu-id="44">파일처리기관리</a></li>
+            -->
+          </ul>
+        </li>
+      </ul>
+      <!-- end sidebar nav -->
+    </div>
+    <!-- end sidebar scrollbar -->
+  </div>
+  <!-- end sidebar -->
+
+  <!-- begin content -->
+  <div id="content" class="content">
+
+    <!-- begin page-header -->
+    <div class="page-header">
+      등록하기
+      <ol class="breadcrumb pull-right"></ol>
+    </div>
+    <!-- end page-header -->
+
+    <!-- begin Step -->
+    <div class="row">
+      <div class="step-area">
+        <div class="step-box checked">
+          <div>1</div>
+          <p>사전협의</p>
+        </div>
+        <div class="step-box active">
+          <div>2</div>
+          <p>기본정보</p>
+        </div>
+        <div class="step-box">
+          <div>3</div>
+          <p>메시지</p>
+        </div>
+        <div class="step-box">
+          <div>4</div>
+          <p>발송대상/발송일</p>
+        </div>
+        <div class="step-box">
+          <div>5</div>
+          <p>승인절차/완료</p>
+        </div>
+      </div>
+    </div>
+    <div class="required-msg">
+      <i class="required"></i> 는 필수 정보입니다.
+    </div>
+    <!-- end Step -->
+
+    <!-- begin 기본정보 -->
+    <section class="clearfix">
+      <form id="frmStep2" onSubmit="return false;">
+        <div class="section-left">
+          <div class="row clearfix">
+            <div class="reg-left">
+              <h3 class="required pdd-top-4">발송구분</h3>
+            </div>
+            <div class="reg-right">
+              <div class="ele_area">
+                <div class="search_field inline-form">
+                  <div class="inline-block">
+                    <label class="radio-container">마케팅(고객관리 포함)
+                      <input type="radio" name="radio2" checked="checked" />
+                      <span class="checkmark"></span>
+                    </label>
+                    <label class="radio-container">비마케팅(기존계약의 유지.관리 등)
+                      <input type="radio" name="radio2" />
+                      <span class="checkmark"></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="mrg-top-10">
+                <div class="msg-box color-gray">
+                  ※ 개인정보보호법 (제15조,22조)에 의거하여 개인정보 이용 통제 및 금융소비자의 권리
+                  보장을 위한 설정으로 민원 등 분쟁이 발생되지 않도록 유의바랍니다.<br/><br/>
+                  [ 공지 (비마케팅)  목적의 예시 ]<br/>
+                  - 대출 원리금 납입 · 미납, 은행상품 만기 안내<br/>
+                  - 은행상품의 갱신 안내, 은행상품의 계약 조건 변경 안내(금리 인상 · 인하 등)<br/>
+                  - 금융거래보호를 위해 통지할 필요가 있는 사항 안내<br/>
+                  - 법 · 규정 시행 예정 통지<br/>
+                  - 부가서비스 · 이용혜택 변경 안내<br/>
+                  - 상품 및 서비스 가입을 위한 필요서류 · 조건, 상세내용 및 진행과정 안내<br/>
+                  - 민원처리 과정 안내, 완전판매 모니터링 진행<br/>
+                  - 영업점 이전 · 통합 · 폐쇄 등의 안내<br/>
+                  - 기타 계약의 유지 · 관리에 필요한 경우 등<br/>
+                  ※ 문의 : 정보보호관리팀(8-5410)<br/>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row clearfix">
+            <div class="reg-left">
+              <h3 class="required pdd-top-4">발송명</h3>
+            </div>
+            <div class="reg-right">
+              <div class="ele_area remaining" data-input="msg_title" data-count="msg_title_count" data-text-len="30">
+                <input type="text" class="form-control" id="msg_title" name="msg_title" value="" placeholder="발송명을 입력하세요" />
+                <p class="text-right color-gray"><span id="msg_title_count">0</span>/30자</p>
+              </div>
+            </div>
+          </div>
+          <div class="row clearfix">
+            <div class="reg-left">
+              <h3 class="required pdd-top-4">상세설명</h3>
+            </div>
+            <div class="reg-right">
+              <div class="ele_area remaining" data-input="msg_content" data-count="msg_content_count" data-text-len="200">
+                <textarea rows="5" class="width-100" id="msg_content" name="msg_content" placeholder="발송 상세설명을 입력하세요"></textarea>
+                <p class="text-right color-gray"><span id="msg_content_count">0</span>/200자</p>
+              </div>
+            </div>
+            <div class="width-29 inline-block vertical-align-top"></div>
+          </div>
+          <div class="clearfix">
+            <div class="reg-left">
+              <h3 class="pdd-top-5">
+                <span class="required">SMS 수신동의 체크</span>
+                <span class="icon-tooltip" data-tippy-content="사전 수신동의 한 고객에게만 발송하거나 수신동의를 하지 않은 고객에게도 발송을<br/>희망할 경우 전체 전송을 선택하시기 바랍니다."><i class="fa fa-info"></i></span>
+              </h3>
+            </div>
+            <div class="reg-right">
+              <div class="ele_area">
+                <div class="search_field inline-form">
+                  <div class="inline-block">
+                    <label class="radio-container">수신동의자만 전송
+                      <input type="radio" name="radio3" checked="checked" />
+                      <span class="checkmark"></span>
+                    </label>
+                    <label class="radio-container">전체 전송
+                      <input type="radio" name="radio3" />
+                      <span class="checkmark"></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row clearfix">
+            <div class="reg-left">
+              <h3 class="required pdd-top-5">중복체크</h3>
+            </div>
+            <div class="reg-right">
+              <div class="ele_area">
+                <div class="search_field inline-form">
+                  <div class="inline-block">
+                    <label class="radio-container">중복제거
+                      <input type="radio" name="radio4" checked="checked" />
+                      <span class="checkmark"></span>
+                    </label>
+                    <label class="radio-container">중복허용
+                      <input type="radio" name="radio4" />
+                      <span class="checkmark"></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row clearfix">
+            <div class="reg-left">
+              <h3 class="required pdd-top-4">발신번호</h3>
+            </div>
+            <div class="reg-right">
+              <div class="ele_area">
+                <input type="text" class="form-control" id="msg_phone" name="msg_phone" value="" placeholder="발신번호를 입력하세요" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row text-center pull-left">
+          <button class="btn btn-border-sub1">취소</button>
+          <button class="btn btn-border-main">임시저장</button>
+          <button class="btn btn-border-sub2">이전</button>
+          <button class="btn btn-bg-main" disabled>다음</button>
+        </div>
+      </form>
+    </section>
+    <!-- end 기본정보 -->
+  </div>
+  <!-- end content -->
+
+<!-- 현재 페이지에 필요한 js -->
+<script type="text/javascript">
+	$(document).ready(function() {
+    init();
+	});
+
+	// 초기실행
+	function init() {
+	}
+
+
+</script>
+<!-- // 현재 페이지에 필요한 js -->
+
+  	</div>
+  <div class="footer">
+    Copyright 2021 IBK All rights reserved.
+  </div>
+</body>
+</html>

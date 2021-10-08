@@ -1,0 +1,312 @@
+<!doctype html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Content-Script-Type" content="text/javascript" />
+	<meta http-equiv="Content-Style-Type" content="text/css" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <title>관리자페이지</title>
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+
+	<link rel="stylesheet" type="text/css" href="./css/style.css?v=20200314" />
+	<link rel="stylesheet" type="text/css" href="./css/animate.min.css" />
+	<link rel="stylesheet" type="text/css" href="./css/sweetalert.css" />
+  <link rel="stylesheet" type="text/css" href="./css/NanumGothic.css">
+	<link rel="stylesheet" type="text/css" href="./css/font-awesome/css/font-awesome.min.css" />
+	<link rel="stylesheet" type="text/css" href="./css/custom.css?v=20200314" />
+
+	<script type="text/javascript" src="./js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="./js/jquery.slimscroll.min.js"></script>
+	<script type="text/javascript" src="./js/sweetalert.min.js"></script>
+	<script type="text/javascript" src="./js/jquery-dateformat.min.js"></script>
+	<script type="text/javascript" src="./js/jquery.twbsPagination.min.js"></script>
+	<script type="text/javascript" src="./js/jquery.popupoverlay.js"></script>
+	<script type="text/javascript" src="./js/jquery-ui.min.js"></script>
+
+  <!-- begin daterangepicker -->
+  <script type="text/javascript" src="./js/moment.min.js"></script>
+  <script type="text/javascript" src="./js/daterangepicker.js"></script>
+  <link rel="stylesheet" type="text/css" href="./css/daterangepicker.css">
+  <!-- end daterangepicker -->
+
+  <!-- begin tippy -->
+  <script type="text/javascript" src="./js/polyfill.min.js?features=Array.prototype.find,Promise,Object.assign"></script>
+  <script type="text/javascript" src="./js/popper.min.js"></script>
+  <script type="text/javascript" src="./js/tippy-bundle.umd.min.js"></script>
+  <!-- end tippy -->
+
+  <!-- begin validate -->
+  <script type="text/javascript" src="./js/jquery.validate.min.js"></script>
+  <script type="text/javascript" src="./js/additional-methods.min.js"></script>
+  <!-- end validate -->
+
+  <!-- begin toast -->
+  <script type="text/javascript" src="./js/jquery.toast.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="./css/jquery.toast.min.css">
+  <!-- end toast -->
+
+  <!-- begin swiper -->
+  <script type="text/javascript" src="./js/slick.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="./css/slick.css">
+  <!-- end swiper -->
+
+	<script type="text/javascript" src="./js/common.js?v=20200314"></script>
+	<script type="text/javascript" src="./js/custom.js?v=20200314"></script>
+  <script type="text/javascript" src="./js/tooltip.js?v=20200314"></script>
+
+</head>
+<body>
+<div id="page-container" class="container">
+
+  <!-- 공통 header -->
+  <header id="header" class="header">
+    <div class="contents-area">
+      <!-- begin header-left -->
+      <div class="header-left"><a href="/"><img src="./img/logo-top.png"></a></div>
+<!--      <div class="header-left"><a href="/"><img src="./img/logo-top-admin.png"></a></div>-->
+      <!-- // end header-left -->
+
+      <!-- begin header-right -->
+      <div class="header-right">
+        <span class="user-nm">고객지원팀 | 홍길동님 로그인</span>
+        <button class="btn btn-logout">로그아웃</button>
+      </div>
+      <!-- // end header-right -->
+    </div>
+  </header>
+  <!-- // 공통 header -->
+
+  <!-- begin sidebar -->
+  <div class="sidebar">
+    <!-- begin sidebar scrollbar -->
+    <div data-scrollbar="true" data-height="100%">
+      <!-- begin sidebar nav -->
+      <ul class="nav font-size-12 left-menu">
+        <!--
+        <li class="has-sub">
+          <a href="javascript:;" class="icon-sms">
+            <b class="caret pull-right"></b>
+            <span>일반문자</span>
+          </a>
+          <ul class="sub-menu">
+            <li><a href="/views/sms/send.php" data-menu-id="11">문자보내기</a></li>
+            <li><a href="/views/sms/message.php" data-menu-id="12">메시지함</a></li>
+            <li><a href="/views/sms/format.php" data-menu-id="13">서식함</a></li>
+            <li><a href="/views/sms/address.php" data-menu-id="14">주소록</a></li>
+            <li><a href="/views/sms/preferences.php" data-menu-id="15">환경설정</a></li>
+            <li><a href="/views/sms/manual.php" data-menu-id="16">매뉴얼 다운로드</a></li>
+          </ul>
+        </li>
+        -->
+        <li class="has-sub">
+          <a href="javascript:;" class="icon-lms">
+            <b class="caret pull-right"></b>
+            <span>대량문자</span>
+          </a>
+          <ul class="sub-menu">
+            <li><a href="1.예약현황_1.html" data-menu-id="21">예약 현황</a></li>
+            <li><a href="2.등록하기_Step1_사전협의_1.html" data-menu-id="22">등록하기</a></li>
+            <li><a href="3.발송현황1.html" data-menu-id="23">발송 현황</a></li>
+            <li><a href="4.발송통계_1.일별.html" data-menu-id="24">발송 통계</a></li>
+          </ul>
+        </li>
+        <!--
+        <li class="has-sub">
+          <a href="javascript:;" class="icon-admin">
+            <b class="caret pull-right"></b>
+            <span>관리자</span>
+          </a>
+          <ul class="sub-menu">
+            <li><a href="/views/admin/ssoLoginAuth.php" data-menu-id="31">SSO 로그인 권한관리</a></li>
+            <li><a href="/views/admin/member.php" data-menu-id="32">로그인 사용자 관리</a></li>
+            <li><a href="/views/admin/motpMember.php" data-menu-id="33">MOTP 사용자 관리</a></li>
+            <li><a href="/views/admin/notice.php" data-menu-id="34">공지사항</a></li>
+            <li><a href="/views/admin/loginHistory.php" data-menu-id="35">로그인 이력조회</a></li>
+            <li><a href="/views/admin/mmsTemplate.php" data-menu-id="36">MMS 템플릿 관리</a></li>
+            <li><a href="/views/admin/sendManagement.php" data-menu-id="37">발송문자관리</a></li>
+          </ul>
+        </li>
+        -->
+        <li class="has-sub">
+          <a href="javascript:;" class="icon-center">
+            <b class="caret pull-right"></b>
+            <span>템플릿 관리</span>
+          </a>
+          <ul class="sub-menu">
+            <li><a href="RCS템플릿.html" data-menu-id="45">RCS 템플릿</a></li>
+            <li><a href="알림톡템플릿.html" data-menu-id="46">알림톡 템플릿</a></li>
+            <!--
+            <li><a href="/views/center/process.php" data-menu-id="41">프로세스관리</a></li>
+            <li><a href="/views/center/statistics.php" data-menu-id="42">통계관리</a></li>
+            <li><a href="/views/center/code.php" data-menu-id="43">코드관리</a></li>
+            <li><a href="/views/center/fileProcessing.php" data-menu-id="44">파일처리기관리</a></li>
+            -->
+          </ul>
+        </li>
+      </ul>
+      <!-- end sidebar nav -->
+    </div>
+    <!-- end sidebar scrollbar -->
+  </div>
+  <!-- end sidebar -->
+
+  <!-- begin content -->
+  <div id="content" class="content">
+
+    <!-- begin page-header -->
+    <div class="page-header">
+      등록하기
+      <ol class="breadcrumb pull-right"></ol>
+    </div>
+    <!-- end page-header -->
+
+    <!-- begin Step -->
+    <div class="row">
+      <div class="step-area">
+        <div class="step-box checked">
+          <div>1</div>
+          <p>사전협의</p>
+        </div>
+        <div class="step-box checked">
+          <div>2</div>
+          <p>기본정보</p>
+        </div>
+        <div class="step-box checked">
+          <div>3</div>
+          <p>메시지</p>
+        </div>
+        <div class="step-box checked">
+          <div>4</div>
+          <p>발송대상/발송일</p>
+        </div>
+        <div class="step-box active">
+          <div>5</div>
+          <p>승인절차/완료</p>
+        </div>
+      </div>
+    </div>
+    <div class="required-msg">
+      <i class="required"></i> 는 필수 정보입니다.
+    </div>
+    <!-- end Step -->
+
+    <!-- begin 사전협의 -->
+    <section class="clearfix">
+      <form id="frmStep5" onSubmit="return false;">
+        <div class="section-left">
+          <div class="row clearfix">
+            <div class="reg-left">
+              <h3 class="pdd-top-4">
+                <span class="required">승인자</span>
+                <span class="icon-tooltip" data-tippy-content="대량문자 등록 시 승인절차가 필요합니다.<br/>승인자의 승인 후 등록이 완료됩니다.<br/>팀원과 부점장은 선택사항입니다.<br/>선택을 원하지 않을 경우 “선택안함＂을 체크하시기 바랍니다."><i class="fa fa-info"></i></span>
+              </h3>
+            </div>
+            <div class="reg-right">
+              <div class="ele_area">
+                <div class="search_field inline-form">
+                  <label class="mrg-right-10 font-weight-light width60">1차승인</label>
+                  <div>
+                    <input class="form-control inline-block" readonly value="홍길동" />
+                  </div>
+                </div>
+              </div>
+              <div class="ele_area row">
+                <div class="search_field inline-form">
+                  <label class="mrg-right-10 font-weight-light width60">2차승인</label>
+                  <div class="input-group input-group-icon">
+                    <input class="form-control inline-block" placeholder="팀원을 검색하세요" readonly />
+                    <a href="javascript:void(0)" class="icon-search"></a>
+                  </div>
+                  <span class="mrg-left-10 mrg-top-5 width82">
+                    <label class="check-container">선택 안함
+                      <input type="checkbox">
+                      <span class="checkmark"></span>
+                    </label>
+                  </span>
+                </div>
+              </div>
+              <div class="ele_area row">
+                <div class="search_field inline-form">
+                  <label class="mrg-right-10 font-weight-light width60 required">3차승인</label>
+                  <div class="input-group input-group-icon">
+                    <input class="form-control inline-block" placeholder="팀장을 검색하세요" readonly />
+                    <a href="javascript:void(0)" class="icon-search"></a>
+                  </div>
+                  <span class="mrg-left-10 mrg-top-5 width82">
+                    &nbsp;
+                  </span>
+                </div>
+              </div>
+              <div class="ele_area row">
+                <div class="search_field inline-form">
+                  <label class="mrg-right-10 font-weight-light width60">4차승인</label>
+                  <div class="input-group input-group-icon">
+                    <input class="form-control inline-block" placeholder="부점장을 검색하세요" readonly />
+                    <a href="javascript:void(0)" class="icon-search"></a>
+                  </div>
+                  <span class="mrg-left-10 mrg-top-5 width82">
+                    <label class="check-container">선택 안함
+                      <input type="checkbox">
+                      <span class="checkmark"></span>
+                    </label>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row clearfix">
+            <div class="reg-left">
+              <h3 class="pdd-top-4">
+                <span>테스트 발송대상</span>
+                <span class="icon-tooltip" data-tippy-content="테스트 메시지를 승인 전 확인할 수 있습니다.<br/>승인자를 제외한  대상자로 테스트 메시지 확인을 원하는 발송대상을 선택하시기 바랍니다. "><i class="fa fa-info"></i></span>
+              </h3>
+            </div>
+            <div class="reg-right">
+              <div class="ele_area test-send-copy">
+                <div class="search_field inline-form test_send_field">
+                  <div class="input-group input-group-icon">
+                    <input class="form-control inline-block" placeholder="발송대상자를 검색하세요" readonly />
+                    <a href="javascript:popupUserSearch()" class="icon-search"></a>
+                  </div>
+                  <p><button id="btnTestSend" class="btn btn-files btn-files-add"></button></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="section-right"></div>
+        <div class="row text-center pull-left">
+          <button class="btn btn-border-sub1 btnStepCancel">취소</button>
+          <button class="btn btn-border-main btnStepTemp">임시저장</button>
+          <button class="btn btn-border-sub2 btnStepPrev">이전</button>
+          <button class="btn btn-bg-main btnStepComplet">완료</button>
+        </div>
+      </form>
+    </section>
+    <!-- end 사전협의 -->
+  </div>
+  <!-- end content -->
+
+<!-- 현재 페이지에 필요한 js -->
+<script type="text/javascript">
+	$(document).ready(function() {
+    init();
+	});
+
+	// 초기실행
+	function init() {
+	}
+
+
+</script>
+<!-- // 현재 페이지에 필요한 js -->
+
+  	</div>
+  <div class="footer">
+    Copyright 2021 IBK All rights reserved.
+  </div>
+</body>
+</html>

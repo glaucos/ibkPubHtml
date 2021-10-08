@@ -1,0 +1,462 @@
+<!doctype html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Content-Script-Type" content="text/javascript" />
+	<meta http-equiv="Content-Style-Type" content="text/css" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <title>관리자페이지</title>
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+
+	<link rel="stylesheet" type="text/css" href="./css/style.css?v=20200314" />
+	<link rel="stylesheet" type="text/css" href="./css/animate.min.css" />
+	<link rel="stylesheet" type="text/css" href="./css/sweetalert.css" />
+  <link rel="stylesheet" type="text/css" href="./css/NanumGothic.css">
+	<link rel="stylesheet" type="text/css" href="./css/font-awesome/css/font-awesome.min.css" />
+	<link rel="stylesheet" type="text/css" href="./css/custom.css?v=20200314" />
+
+	<script type="text/javascript" src="./js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="./js/jquery.slimscroll.min.js"></script>
+	<script type="text/javascript" src="./js/sweetalert.min.js"></script>
+	<script type="text/javascript" src="./js/jquery-dateformat.min.js"></script>
+	<script type="text/javascript" src="./js/jquery.twbsPagination.min.js"></script>
+	<script type="text/javascript" src="./js/jquery.popupoverlay.js"></script>
+	<script type="text/javascript" src="./js/jquery-ui.min.js"></script>
+
+  <!-- begin daterangepicker -->
+  <script type="text/javascript" src="./js/moment.min.js"></script>
+  <script type="text/javascript" src="./js/daterangepicker.js"></script>
+  <link rel="stylesheet" type="text/css" href="./css/daterangepicker.css">
+  <!-- end daterangepicker -->
+
+  <!-- begin tippy -->
+  <script type="text/javascript" src="./js/polyfill.min.js?features=Array.prototype.find,Promise,Object.assign"></script>
+  <script type="text/javascript" src="./js/popper.min.js"></script>
+  <script type="text/javascript" src="./js/tippy-bundle.umd.min.js"></script>
+  <!-- end tippy -->
+
+  <!-- begin validate -->
+  <script type="text/javascript" src="./js/jquery.validate.min.js"></script>
+  <script type="text/javascript" src="./js/additional-methods.min.js"></script>
+  <!-- end validate -->
+
+  <!-- begin toast -->
+  <script type="text/javascript" src="./js/jquery.toast.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="./css/jquery.toast.min.css">
+  <!-- end toast -->
+
+  <!-- begin swiper -->
+  <script type="text/javascript" src="./js/slick.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="./css/slick.css">
+  <!-- end swiper -->
+
+	<script type="text/javascript" src="./js/common.js?v=20200314"></script>
+	<script type="text/javascript" src="./js/custom.js?v=20200314"></script>
+  <script type="text/javascript" src="./js/tooltip.js?v=20200314"></script>
+
+</head>
+<body>
+<div id="page-container" class="container">
+
+  <!-- 공통 header -->
+  <header id="header" class="header">
+    <div class="contents-area">
+      <!-- begin header-left -->
+      <div class="header-left"><a href="/"><img src="./img/logo-top.png"></a></div>
+<!--      <div class="header-left"><a href="/"><img src="./img/logo-top-admin.png"></a></div>-->
+      <!-- // end header-left -->
+
+      <!-- begin header-right -->
+      <div class="header-right">
+        <span class="user-nm">고객지원팀 | 홍길동님 로그인</span>
+        <button class="btn btn-logout">로그아웃</button>
+      </div>
+      <!-- // end header-right -->
+    </div>
+  </header>
+  <!-- // 공통 header -->
+
+  <!-- begin sidebar -->
+  <div class="sidebar">
+    <!-- begin sidebar scrollbar -->
+    <div data-scrollbar="true" data-height="100%">
+      <!-- begin sidebar nav -->
+      <ul class="nav font-size-12 left-menu">
+        <!--
+        <li class="has-sub">
+          <a href="javascript:;" class="icon-sms">
+            <b class="caret pull-right"></b>
+            <span>일반문자</span>
+          </a>
+          <ul class="sub-menu">
+            <li><a href="/views/sms/send.php" data-menu-id="11">문자보내기</a></li>
+            <li><a href="/views/sms/message.php" data-menu-id="12">메시지함</a></li>
+            <li><a href="/views/sms/format.php" data-menu-id="13">서식함</a></li>
+            <li><a href="/views/sms/address.php" data-menu-id="14">주소록</a></li>
+            <li><a href="/views/sms/preferences.php" data-menu-id="15">환경설정</a></li>
+            <li><a href="/views/sms/manual.php" data-menu-id="16">매뉴얼 다운로드</a></li>
+          </ul>
+        </li>
+        -->
+        <li class="has-sub">
+          <a href="javascript:;" class="icon-lms">
+            <b class="caret pull-right"></b>
+            <span>대량문자</span>
+          </a>
+          <ul class="sub-menu">
+            <li><a href="1.예약현황_1.html" data-menu-id="21">예약 현황</a></li>
+            <li><a href="2.등록하기_Step1_사전협의_1.html" data-menu-id="22">등록하기</a></li>
+            <li><a href="3.발송현황1.html" data-menu-id="23">발송 현황</a></li>
+            <li><a href="4.발송통계_1.일별.html" data-menu-id="24">발송 통계</a></li>
+          </ul>
+        </li>
+        <!--
+        <li class="has-sub">
+          <a href="javascript:;" class="icon-admin">
+            <b class="caret pull-right"></b>
+            <span>관리자</span>
+          </a>
+          <ul class="sub-menu">
+            <li><a href="/views/admin/ssoLoginAuth.php" data-menu-id="31">SSO 로그인 권한관리</a></li>
+            <li><a href="/views/admin/member.php" data-menu-id="32">로그인 사용자 관리</a></li>
+            <li><a href="/views/admin/motpMember.php" data-menu-id="33">MOTP 사용자 관리</a></li>
+            <li><a href="/views/admin/notice.php" data-menu-id="34">공지사항</a></li>
+            <li><a href="/views/admin/loginHistory.php" data-menu-id="35">로그인 이력조회</a></li>
+            <li><a href="/views/admin/mmsTemplate.php" data-menu-id="36">MMS 템플릿 관리</a></li>
+            <li><a href="/views/admin/sendManagement.php" data-menu-id="37">발송문자관리</a></li>
+          </ul>
+        </li>
+        -->
+        <li class="has-sub">
+          <a href="javascript:;" class="icon-center">
+            <b class="caret pull-right"></b>
+            <span>템플릿 관리</span>
+          </a>
+          <ul class="sub-menu">
+            <li><a href="RCS템플릿.html" data-menu-id="45">RCS 템플릿</a></li>
+            <li><a href="알림톡템플릿.html" data-menu-id="46">알림톡 템플릿</a></li>
+            <!--
+            <li><a href="/views/center/process.php" data-menu-id="41">프로세스관리</a></li>
+            <li><a href="/views/center/statistics.php" data-menu-id="42">통계관리</a></li>
+            <li><a href="/views/center/code.php" data-menu-id="43">코드관리</a></li>
+            <li><a href="/views/center/fileProcessing.php" data-menu-id="44">파일처리기관리</a></li>
+            -->
+          </ul>
+        </li>
+      </ul>
+      <!-- end sidebar nav -->
+    </div>
+    <!-- end sidebar scrollbar -->
+  </div>
+  <!-- end sidebar -->
+
+<!-- begin content -->
+<div id="content" class="content">
+
+  <!-- begin page-header -->
+  <div class="page-header">
+    RCS 템플릿
+    <ol class="breadcrumb pull-right"></ol>
+  </div>
+  <!-- end page-header -->
+
+</div>
+<!-- end content -->
+
+<!-- RCS 템플릿 수정 -->
+<div id="popupTemplate" class="modalPopup hide position-top" style="width: 900px">
+  <div class="modal-header"><h1>RCS 템플릿 수정</h1></div>
+  <div class="modal-body">
+    <div class="row preview-area clearfix">
+      <div class="preview-left">
+        <div class="template-title">승인완료 (수정)</div>
+        <div class="pdd-right-10 popupTemplateScroll">
+          <div class="row clearfix">
+            <div class="preview-form-left">
+              <h3 class="required pdd-top-4">템플릿ID</h3>
+            </div>
+            <div class="preview-form-right">
+              <div class="ele_area">
+                <div class="search_field inline-form">
+                  <input type="text" class="form-control" placeholder="" readonly>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row clearfix">
+            <div class="preview-form-left">
+              <h3 class="required pdd-top-4">템플릿 속성</h3>
+            </div>
+            <div class="preview-form-right">
+              <div class="ele_area">
+                <div class="search_field inline-form">
+                  <label class="radio-container">서술(description)
+                    <input type="radio" name="template-attr" data-input="div-template-attr-desc" checked="checked" />
+                    <span class="checkmark"></span>
+                  </label>
+                  <label class="radio-container">스타일(Cell)
+                    <input type="radio" name="template-attr" data-input="div-template-attr-cell" />
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row clearfix">
+            <div class="preview-form-left">
+              <h3 class="required pdd-top-4">유형</h3>
+            </div>
+            <div class="preview-form-right">
+              <div class="ele_area">
+                <div class="search_field inline-form">
+                  <select class="width-100">
+                    <option>템플릿 유형을 선택하세요</option>
+                    <option value="">승인</option>
+                    <option value="">입금</option>
+                    <option value="">출금</option>
+                    <option value="">출고</option>
+                    <option value="">취소</option>
+                    <option value="">명세서</option>
+                    <option value="">주문</option>
+                    <option value="">배송</option>
+                    <option value="">예약</option>
+                    <option value="">회원가입</option>
+                    <option value="">인증</option>
+                    <option value="">안내</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row clearfix">
+            <div class="preview-form-left">
+              <h3 class="required pdd-top-4">템플릿명</h3>
+            </div>
+            <div class="preview-form-right">
+              <div class="ele_area">
+                <div class="search_field inline-form">
+                  <div class="ele_area remaining" data-input="template-subject" data-count="template-subject_count" data-text-len="30">
+                    <input type="text" class="form-control" id="template-subject" name="template-subject" value="" placeholder="제목을 입력하세요">
+                    <p class="text-right color-gray"><span id="template-subject_count">0</span>/30자</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row clearfix mrg-top-10 div-template-attr" id="div-template-attr-desc">
+            <div class="preview-form-left">
+              <h3 class="pdd-top-4">
+                <span class="required">내용</span>
+                </span>
+              </h3>
+            </div>
+            <div class="preview-form-right">
+              <div class="pdd-top-5 pdd-btm-10">
+                변수로 설정하고자 하는 내용을 {{ }} 표시로 작성해주세요.<br/>
+                변수명은 20자 이내의 한글, 영문, 숫자, 언더바만 가능합니다.<br/>
+                (특수문자, 공란, 줄바꿈 사용불가)<br/>
+                ※ {{ description}} 변수명은 사용 불가<br/>
+                ※ 스타일(Cell) 템플릿은 본문 내용에 변수를 한 개 이상<br/>
+                <span class='pdd-left-15'>필수로 입력해야 합니다.</span><br/>
+                <span class='pdd-left-15'>예) 이름과 출금일을 변수설정 : {{이름}}, {{date}}<span><br/>
+              </div>
+              <div class="ele_area">
+                <div class="search_field width-100">
+                  <div class="ele_area remaining_byte" data-input="msg_content2" data-count="msg_content2_count" data-text-len="90">
+                    <textarea rows="3" class="width-100" id="msg_content2" name="msg_content2" placeholder="내용을 입력하세요"></textarea>
+                    <p class="text-right color-gray"><span id="msg_content2_count">0</span>/90자</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row clearfix mrg-top-10 div-template-attr hide" id="div-template-attr-cell">
+            <div class="preview-form-left">
+              <h3 class="pdd-top-4">
+                <span class="required">내용</span>
+              </h3>
+            </div>
+            <div class="preview-form-right">
+              <div class="pdd-top-5 pdd-btm-10">
+                변수로 설정하고자 하는 내용을 {{ }} 표시로 작성해주세요.<br/>
+                변수명은 20자 이내의 한글, 영문, 숫자, 언더바만 가능합니다. (특수문자, 공란, 줄바꿈 사용불가)<br/>
+                ※ {{ description}} 변수명은 사용 불가<br/>
+                ※ 서술(description) 템플릿은 본문 내용을 변수 만으로 구성할 수 없습니다. (변수 이외 문장 필수 입력)<br/>
+                <span class='pdd-left-15'>예) 이름과 출금일을 변수설정 : {{이름}}, {{date}}<span><br/>
+                *실제 변수의 최대 길이를 고려해 메시지 내용은 90자 이내로 작성 해주세요. (변수명의 길이는 반영되지 않음)<br/>
+              </div>
+              <div class="ele_area cell-copy">
+                <div class="search_field inline-form">
+                  <span class="cell-group">
+                    <button class="btn-cel one active" data-value="one"></button>
+                    <button class="btn-cel two" data-value="two"></button>
+                  </span>
+                  <div class="mrg-right-10 div-cell-area div-cell-one">
+                    <input class="form-control width-100 mrg-right-10" value="예약일시" />
+                  </div>
+                  <div class="mrg-right-10 hide div-cell-area div-cell-two">
+                    <input class="form-control mrg-right-10" value="예약일시" />
+                  </div>
+                  <div class="mrg-right-10 hide div-cell-area div-cell-two">
+                    <input class="form-control mrg-right-10" value="{{예약일시}}" />
+                  </div>
+                  <label class="check-container mrg-top-3">라인
+                    <input type="checkbox" />
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+                <div class="search_field inline-form pdd-top-10">
+                  <span class="cell-group">
+                    <button class="btn-cel one" data-value="one"></button>
+                    <button class="btn-cel two active" data-value="two"></button>
+                  </span>
+                  <div class="mrg-right-10 hide div-cell-area div-cell-one">
+                    <input class="form-control width-100 mrg-right-10" value="예약일시" />
+                  </div>
+                  <div class="mrg-right-10 div-cell-area div-cell-two">
+                    <input class="form-control mrg-right-10" value="예약일시" />
+                  </div>
+                  <div class="mrg-right-10 div-cell-area div-cell-two">
+                    <input class="form-control mrg-right-10" value="{{예약일시}}" />
+                  </div>
+                  <label class="check-container mrg-top-3">라인
+                    <input type="checkbox" />
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+              </div>
+              <div class="text-right mrg-top-10">
+                <button id="btnCellCopy" class="btn btn-inner">Cell 추가</button>
+              </div>
+            </div>
+          </div>
+          <div class="row clearfix">
+            <div class="preview-form-left">
+              <h3 class="required pdd-top-4">버튼 노출</h3>
+            </div>
+            <div class="preview-form-right">
+              <div class="ele_area">
+                <div class="search_field inline-form">
+                  <label class="radio-container">미사용
+                    <input type="radio" name="button-display" value="0" checked="checked" />
+                    <span class="checkmark"></span>
+                  </label>
+                  <label class="radio-container">1개
+                    <input type="radio" name="button-display" value="1" />
+                    <span class="checkmark"></span>
+                  </label>
+                  <label class="radio-container">2개
+                    <input type="radio" name="button-display" value="2" />
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <section id="div-button-display"></section>
+
+          <div class="row clearfix">
+            <div class="preview-form-left">
+              <h3 class="pdd-top-4">등록일</h3>
+            </div>
+            <div class="preview-form-right pdd-top-4">
+              2021-08-24 / 홍길동
+            </div>
+          </div>
+          <div class="row text-left">
+            <label class="check-container">정보성 메시지만 보낼 수 있으며, 광고 등 정책에 위배되는 메시지 발송 시 템플릿 사용이 중지될 수 있음을 동의합니다.
+              <input type="checkbox">
+              <span class="checkmark"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="preview-right">
+        <div class="div-msg-preview">
+          <div class="div-msg-preview-header">
+            <h2><i class="fa fa-search pdd-right-5"></i> 미리보기</h2>
+          </div>
+          <div class="div-msg-preview-body preview-height">
+            <div class="emulator_area">
+              <div class="emulator_cont">
+                <div class="emulator_view">
+                  <div class="template-openrichcard-linearlayout">
+                    <div class="template-openrichcard-imageview">
+                      <img src="https://www.rcsbizcenter.com/BP/1.0/fileDownload/LT-200821104327281-KQbz/1">
+                    </div>
+                    <div class="template-openrichcard-linearlayout">
+                      <div class="template-openrichcard-linearlayout template-openrichcard-linearlayout-horizontal">
+                        <div class="template-openrich-textview textStart">
+                          <p class="text">예약일시</p>
+                        </div>
+                        <div class="template-openrich-textview textEnd">
+                          <p class="text">{{예약일시}}</p>
+                        </div>
+                      </div>
+                      <div class="template-openrichcard-hrview"></div>
+                      <div class="template-openrichcard-linearlayout template-openrichcard-linearlayout-horizontal">
+                        <div class="template-openrich-textview textStart">
+                          <p class="text">{{고객명}} 님의 카드 결제 대금 안내</p>
+                        </div>
+                      </div>
+                      <div class="template-openrichcard-hrview"></div>
+                      <div class="template-openrichcard-linearlayout template-openrichcard-linearlayout-horizontal">
+                        <div class="template-openrich-textview textStart">
+                          <p class="text">{{결제금액}}</p>
+                        </div>
+                      </div>
+                      <div class="template-openrichcard-hrview"></div>
+                      <div class="template-openrichcard-linearlayout template-openrichcard-linearlayout-horizontal">
+                        <div class="template-openrich-textview textStart">
+                          <p class="text">
+                            ※ 카드사별 이용내역, 결제계좌별<br/>
+                            출금금액 등 자세한 사항은<br/>
+                            스마트명세서를 통해 확인하세요.<br/>
+                          </p>
+                        </div>
+                      </div>
+                      <div class="template-openrichcard-hrview"></div>
+                    </div>
+                  </div>
+                  <div class="template-openrichcard-suggestion">
+                    <div>명세서바로가기</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <a href="javascript:;" class="btn btn-border-sub1 popupTemplate_close" >취소</a>
+    <a href="javascript:;" class="btn btn-bg-main popupEditAppy" >수정승인 요청</a>
+  </div>
+</div>
+
+<!-- 현재 페이지에 필요한 js -->
+<script type="text/javascript">
+  $(document).ready(function() {
+    init();
+  });
+
+  // 초기실행
+  function init() {
+    $('#popupTemplate').popup('show');
+    generateSlimScroll('.popupTemplateScroll', { height: '610px', size: '3px', allowPageScroll: true});
+  }
+
+
+</script>
+<!-- // 현재 페이지에 필요한 js -->
+
+  	</div>
+  <div class="footer">
+    Copyright 2021 IBK All rights reserved.
+  </div>
+</body>
+</html>

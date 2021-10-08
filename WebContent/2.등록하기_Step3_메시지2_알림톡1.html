@@ -1,0 +1,482 @@
+<!doctype html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Content-Script-Type" content="text/javascript" />
+	<meta http-equiv="Content-Style-Type" content="text/css" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <title>관리자페이지</title>
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+
+	<link rel="stylesheet" type="text/css" href="./css/style.css?v=20200314" />
+	<link rel="stylesheet" type="text/css" href="./css/animate.min.css" />
+	<link rel="stylesheet" type="text/css" href="./css/sweetalert.css" />
+  <link rel="stylesheet" type="text/css" href="./css/NanumGothic.css">
+	<link rel="stylesheet" type="text/css" href="./css/font-awesome/css/font-awesome.min.css" />
+	<link rel="stylesheet" type="text/css" href="./css/custom.css?v=20200314" />
+
+	<script type="text/javascript" src="./js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="./js/jquery.slimscroll.min.js"></script>
+	<script type="text/javascript" src="./js/sweetalert.min.js"></script>
+	<script type="text/javascript" src="./js/jquery-dateformat.min.js"></script>
+	<script type="text/javascript" src="./js/jquery.twbsPagination.min.js"></script>
+	<script type="text/javascript" src="./js/jquery.popupoverlay.js"></script>
+	<script type="text/javascript" src="./js/jquery-ui.min.js"></script>
+
+  <!-- begin daterangepicker -->
+  <script type="text/javascript" src="./js/moment.min.js"></script>
+  <script type="text/javascript" src="./js/daterangepicker.js"></script>
+  <link rel="stylesheet" type="text/css" href="./css/daterangepicker.css">
+  <!-- end daterangepicker -->
+
+  <!-- begin tippy -->
+  <script type="text/javascript" src="./js/polyfill.min.js?features=Array.prototype.find,Promise,Object.assign"></script>
+  <script type="text/javascript" src="./js/popper.min.js"></script>
+  <script type="text/javascript" src="./js/tippy-bundle.umd.min.js"></script>
+  <!-- end tippy -->
+
+  <!-- begin validate -->
+  <script type="text/javascript" src="./js/jquery.validate.min.js"></script>
+  <script type="text/javascript" src="./js/additional-methods.min.js"></script>
+  <!-- end validate -->
+
+  <!-- begin toast -->
+  <script type="text/javascript" src="./js/jquery.toast.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="./css/jquery.toast.min.css">
+  <!-- end toast -->
+
+  <!-- begin swiper -->
+  <script type="text/javascript" src="./js/slick.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="./css/slick.css">
+  <!-- end swiper -->
+
+	<script type="text/javascript" src="./js/common.js?v=20200314"></script>
+	<script type="text/javascript" src="./js/custom.js?v=20200314"></script>
+  <script type="text/javascript" src="./js/tooltip.js?v=20200314"></script>
+
+</head>
+<body>
+<div id="page-container" class="container">
+
+  <!-- 공통 header -->
+  <header id="header" class="header">
+    <div class="contents-area">
+      <!-- begin header-left -->
+      <div class="header-left"><a href="/"><img src="./img/logo-top.png"></a></div>
+<!--      <div class="header-left"><a href="/"><img src="./img/logo-top-admin.png"></a></div>-->
+      <!-- // end header-left -->
+
+      <!-- begin header-right -->
+      <div class="header-right">
+        <span class="user-nm">고객지원팀 | 홍길동님 로그인</span>
+        <button class="btn btn-logout">로그아웃</button>
+      </div>
+      <!-- // end header-right -->
+    </div>
+  </header>
+  <!-- // 공통 header -->
+
+  <!-- begin sidebar -->
+  <div class="sidebar">
+    <!-- begin sidebar scrollbar -->
+    <div data-scrollbar="true" data-height="100%">
+      <!-- begin sidebar nav -->
+      <ul class="nav font-size-12 left-menu">
+        <!--
+        <li class="has-sub">
+          <a href="javascript:;" class="icon-sms">
+            <b class="caret pull-right"></b>
+            <span>일반문자</span>
+          </a>
+          <ul class="sub-menu">
+            <li><a href="/views/sms/send.php" data-menu-id="11">문자보내기</a></li>
+            <li><a href="/views/sms/message.php" data-menu-id="12">메시지함</a></li>
+            <li><a href="/views/sms/format.php" data-menu-id="13">서식함</a></li>
+            <li><a href="/views/sms/address.php" data-menu-id="14">주소록</a></li>
+            <li><a href="/views/sms/preferences.php" data-menu-id="15">환경설정</a></li>
+            <li><a href="/views/sms/manual.php" data-menu-id="16">매뉴얼 다운로드</a></li>
+          </ul>
+        </li>
+        -->
+        <li class="has-sub">
+          <a href="javascript:;" class="icon-lms">
+            <b class="caret pull-right"></b>
+            <span>대량문자</span>
+          </a>
+          <ul class="sub-menu">
+            <li><a href="1.예약현황_1.html" data-menu-id="21">예약 현황</a></li>
+            <li><a href="2.등록하기_Step1_사전협의_1.html" data-menu-id="22">등록하기</a></li>
+            <li><a href="3.발송현황1.html" data-menu-id="23">발송 현황</a></li>
+            <li><a href="4.발송통계_1.일별.html" data-menu-id="24">발송 통계</a></li>
+          </ul>
+        </li>
+        <!--
+        <li class="has-sub">
+          <a href="javascript:;" class="icon-admin">
+            <b class="caret pull-right"></b>
+            <span>관리자</span>
+          </a>
+          <ul class="sub-menu">
+            <li><a href="/views/admin/ssoLoginAuth.php" data-menu-id="31">SSO 로그인 권한관리</a></li>
+            <li><a href="/views/admin/member.php" data-menu-id="32">로그인 사용자 관리</a></li>
+            <li><a href="/views/admin/motpMember.php" data-menu-id="33">MOTP 사용자 관리</a></li>
+            <li><a href="/views/admin/notice.php" data-menu-id="34">공지사항</a></li>
+            <li><a href="/views/admin/loginHistory.php" data-menu-id="35">로그인 이력조회</a></li>
+            <li><a href="/views/admin/mmsTemplate.php" data-menu-id="36">MMS 템플릿 관리</a></li>
+            <li><a href="/views/admin/sendManagement.php" data-menu-id="37">발송문자관리</a></li>
+          </ul>
+        </li>
+        -->
+        <li class="has-sub">
+          <a href="javascript:;" class="icon-center">
+            <b class="caret pull-right"></b>
+            <span>템플릿 관리</span>
+          </a>
+          <ul class="sub-menu">
+            <li><a href="RCS템플릿.html" data-menu-id="45">RCS 템플릿</a></li>
+            <li><a href="알림톡템플릿.html" data-menu-id="46">알림톡 템플릿</a></li>
+            <!--
+            <li><a href="/views/center/process.php" data-menu-id="41">프로세스관리</a></li>
+            <li><a href="/views/center/statistics.php" data-menu-id="42">통계관리</a></li>
+            <li><a href="/views/center/code.php" data-menu-id="43">코드관리</a></li>
+            <li><a href="/views/center/fileProcessing.php" data-menu-id="44">파일처리기관리</a></li>
+            -->
+          </ul>
+        </li>
+      </ul>
+      <!-- end sidebar nav -->
+    </div>
+    <!-- end sidebar scrollbar -->
+  </div>
+  <!-- end sidebar -->
+
+  <!-- begin content -->
+  <div id="content" class="content">
+
+    <!-- begin page-header -->
+    <div class="page-header">
+      등록하기
+      <ol class="breadcrumb pull-right"></ol>
+    </div>
+    <!-- end page-header -->
+
+    <!-- begin Step -->
+    <div class="row">
+      <div class="step-area">
+        <div class="step-box checked">
+          <div>1</div>
+          <p>사전협의</p>
+        </div>
+        <div class="step-box checked">
+          <div>2</div>
+          <p>기본정보</p>
+        </div>
+        <div class="step-box active">
+          <div>3</div>
+          <p>메시지</p>
+        </div>
+        <div class="step-box">
+          <div>4</div>
+          <p>발송대상/발송일</p>
+        </div>
+        <div class="step-box">
+          <div>5</div>
+          <p>승인절차/완료</p>
+        </div>
+      </div>
+    </div>
+    <div class="required-msg">
+      <i class="required"></i> 는 필수 정보입니다.
+    </div>
+    <!-- end Step -->
+
+    <!-- begin 기본정보 -->
+    <section class="clearfix">
+      <form id="frmStep3" onSubmit="return false;">
+        <div class="section-left">
+          <div class="row clearfix">
+            <div class="reg-left">
+              <h3 class="required pdd-top-4">메시지 유형</h3>
+            </div>
+            <div class="reg-right">
+              <div class="ele_area">
+                <div class="search_field inline-form">
+                  <div class="inline-block">
+                    <label class="radio-container">문자
+                      <input type="radio" name="radio1" />
+                      <span class="checkmark"></span>
+                    </label>
+                    <label class="radio-container">알림톡
+                      <input type="radio" name="radio1" checked="checked" />
+                      <span class="checkmark"></span>
+                    </label>
+                    <label class="radio-container">RCS
+                      <input type="radio" name="radio1" />
+                      <span class="checkmark"></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row clearfix">
+            <div class="reg-left">
+              <h3 class="pdd-top-4">
+                <span class="required">템플릿 선택</span>
+                <span class="icon-tooltip" data-tippy-content="사전 정상 승인된 템플릿만 확인 가능합니다.<br/>템플릿이 확인되지 않는다면 템플릿 등록 및 승인을 확인 후 사용하시기 바랍니다."><i class="fa fa-info"></i></span>
+              </h3>
+            </div>
+            <div class="reg-right">
+              <div>
+                <div class="search_area search_inner">
+                  <div class="search_field width180">
+                    <label>템플릿 ID / 템플릿명</label>
+                    <div>
+                      <input type="text" class="form-control" placeholder="검색어를 입력하세요" value="" />
+                    </div>
+                  </div>
+                  <div class="search_field">
+                    <label>등록일</label>
+                    <div>
+                      <input type="text" class="form-control date" placeholder="선택하세요" readonly value="" />
+                    </div>
+                  </div>
+                  <div class="search_field">
+                    <button class="btn btn-reset btn-sm width60">초기화</button>
+                    <button class="btn btn-search btn-sm width60">검색</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- begin table -->
+              <div class="row">
+                <div class="table-result">
+                  총 <strong class="split">15</strong>
+                  <select class="search-limit">
+                    <option>5개씩 보기</option>
+                    <option>10개씩 보기</option>
+                    <option>20개씩 보기</option>
+                    <option>30개씩 보기</option>
+                  </select>
+                </div>
+                <div class="table-responsive">
+                  <table class="table table-hover table-inner">
+                    <colgroup>
+                      <col width="60" />
+                      <col width="*" />
+                      <col width="100" />
+                      <col width="80" />
+                    </colgroup>
+                    <thead>
+                    <tr>
+                      <th>No.</th>
+                      <th>템플릿 ID / 템플릿명</th>
+                      <th>등록일</th>
+                      <th>선택</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td class="text-left">
+                        <p>Test_20210707</p>
+                        <p>첫거래 이벤트 0707</p>
+                      </td>
+                      <td>2021-07-05</td>
+                      <td><button class="btn btn-inner btn-sm">선택</button></td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td class="text-left">
+                        <p>Test_20210707</p>
+                        <p>첫거래 이벤트 0707</p>
+                      </td>
+                      <td>2021-07-05</td>
+                      <td><button class="btn btn-inner btn-sm">선택</button></td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td class="text-left">
+                        <p>Test_20210707</p>
+                        <p>첫거래 이벤트 0707</p>
+                      </td>
+                      <td>2021-07-05</td>
+                      <td><button class="btn btn-inner btn-sm">선택</button></td>
+                    </tr>
+                    <tr>
+                      <td>4</td>
+                      <td class="text-left">
+                        <p>Test_20210707</p>
+                        <p>첫거래 이벤트 0707</p>
+                      </td>
+                      <td>2021-07-05</td>
+                      <td><button class="btn btn-inner btn-sm">선택</button></td>
+                    </tr>
+                    <tr>
+                      <td>5</td>
+                      <td class="text-left">
+                        <p>Test_20210707</p>
+                        <p>첫거래 이벤트 0707</p>
+                      </td>
+                      <td>2021-07-05</td>
+                      <td><button class="btn btn-inner btn-sm">선택</button></td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="text-center">
+                  <ul class="twbsPagination"></ul>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="row clearfix">
+            <div class="reg-left">
+              <h3 class="pdd-top-4">
+                <span class="required">전환발송 보내기</span>
+                <span class="icon-tooltip" data-tippy-content="전환발송 보내기를 사용할 경우, 채널을 통한 메시지 전송 실패 시 문자로<br/>전환하여 전송하는 방법으로 미리보기에서 확인이 가능합니다."><i class="fa fa-info"></i></span>
+              </h3>
+              <p>(발송 실패 시)</p>
+            </div>
+            <div class="reg-right">
+              <div class="ele_area">
+                <div class="search_field inline-form">
+                  <div class="inline-block">
+                    <label class="radio-container">사용
+                      <input type="radio" name="how-send-type" checked="checked" />
+                      <span class="checkmark"></span>
+                    </label>
+                    <label class="radio-container">미사용
+                      <input type="radio" name="how-send-type" />
+                      <span class="checkmark"></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <section class="how-send-type-list">
+                <p class="pdd-top-5">
+                  메시지를 자유롭게 수정하여 발송 가능하며, 입력한 메시지 byte 수에 따라 SMS/LMS 로 자동 변경됩니다.
+                </p>
+                <div class="row ele_area">
+                  <div class="search_field display-block">
+                    <label class="required">대체 메시지 유형</label>
+                    <div>
+                      <input type="text" class="form-control" value="LMS" placeholder="" readonly="readonly" />
+                    </div>
+                  </div>
+                </div>
+                <div class="row ele_area">
+                  <div class="search_field display-block">
+                    <label class="required">대체 메시지 내용</label>
+                    <div>
+                      <div class="ele_area">
+                        <input type="text" class="form-control" value="" placeholder="제목을 입력하세요 (최대 60byte)" />
+                      </div>
+                      <div class="ele_area remaining_byte pdd-top-10" data-input="how_msg_type_content" data-count="how_msg_type_content_count" data-text-len="200">
+                        <textarea rows="5" class="width-100" id="how_msg_type_content" name="how_msg_type_content" placeholder="내용을 입력하세요"></textarea>
+                        <p class="text-right color-gray"><span id="how_msg_type_content_count">0</span>/2,000 byte</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+
+        </div>
+        <div class="section-right mrg-top-20">
+          <div class="div-msg-preview">
+            <div class="div-msg-preview-header">
+              <h2><i class="fa fa-search pdd-right-5"></i> 미리보기 | 알림톡</h2>
+            </div>
+            <div class="div-msg-preview-body preview-height">
+              <!-- 미리보기 유형 있을 경우 -->
+              <div class="mrg-btm-15">
+                <label class="pdd-right-10 font-weight-bold">미리보기 유형</label>
+                <div class="inline-block">
+                  <label class="radio-container">알림톡
+                    <input type="radio" name="radio2" checked="checked" />
+                    <span class="checkmark"></span>
+                  </label>
+                  <label class="radio-container">전환발송
+                    <input type="radio" name="radio2" />
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+              </div>
+              <!-- // 미리보기 유형 있을 경우 -->
+              <div class="emulator_area">
+                <div class="emulator_cont">
+                  <div class="template-richcard-general">
+                    <!-- 내용 -->
+                    <div class="template-richcard-descriptionview">
+                      <p class="text">
+                        안녕하세요. ${고객명}고객님.<br>
+                        고객센터 번호가 1588-0000으로 변경되었음을 안내드립니다.<br>
+                        행복한 하루되세요~<br>
+                      </p>
+                    </div>
+                    <!-- // 내용 -->
+                  </div>
+                  <!-- 버튼 -->
+                  <div class="template-openrichcard-suggestion">
+                    <div>고객센터 바로가기</div>
+                  </div>
+                  <!-- // 버튼 -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row text-center pull-left">
+          <button class="btn btn-border-sub1">취소</button>
+          <button class="btn btn-border-main">임시저장</button>
+          <button class="btn btn-border-sub2">이전</button>
+          <button class="btn btn-bg-main">다음</button>
+        </div>
+      </form>
+    </section>
+    <!-- end 기본정보 -->
+  </div>
+  <!-- end content -->
+
+<!-- 현재 페이지에 필요한 js -->
+<script type="text/javascript">
+	$(document).ready(function() {
+    // 페이징 처리
+    $('.twbsPagination').twbsPagination('destroy');
+    $('.twbsPagination').twbsPagination({
+      totalPages: 3,
+      startPage: 2,
+      initiateStartPageClick: false,
+      first: '<i class="fa fa-angle-double-left"></i>',
+      prev: '<i class="fa fa-angle-left"></i>',
+      next: '<i class="fa fa-angle-right"></i>',
+      last: '<i class="fa fa-angle-double-right"></i>',
+      onPageClick: function (event, page) {
+        console.log(event, page);
+      }
+    });
+
+    init();
+	});
+
+	// 초기실행
+	function init() {
+	}
+
+
+</script>
+<!-- // 현재 페이지에 필요한 js -->
+
+  	</div>
+  <div class="footer">
+    Copyright 2021 IBK All rights reserved.
+  </div>
+</body>
+</html>
